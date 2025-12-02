@@ -151,22 +151,3 @@ tick_count = 1
 [node name="Label" type="Label" parent="VBoxContainer/Panel7/VBoxContainer2"]
 layout_mode = 2
 text = "Slider for X"
-
-[node name="Panel8" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 50)
-layout_direction = 3
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel8"]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 43.0
-
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Panel8/VBoxContainer2"]
-layout_mode = 2
-tick_count = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/Panel8/VBoxContainer2"]
-layout_mode = 2
-text = "Slider for X"
