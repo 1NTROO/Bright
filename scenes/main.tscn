@@ -193,29 +193,7 @@ occluder = SubResource("OccluderPolygon2D_tbgi4")
 occluder_light_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Wall"]
-<<<<<<< HEAD
 modulate = Color(0, 0, 0, 1)
-=======
-modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
-light_mask = 6
-visibility_layer = 4
-scale = Vector2(0.493, 20)
-texture = ExtResource("1_0wfyh")
-
-[node name="Wall2" type="Node2D" parent="."]
-position = Vector2(681, 443)
-scale = Vector2(7.5672183, 0.4142582)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall2"]
-light_mask = 4
-visibility_layer = 4
-scale = Vector2(0.493, 19.999998)
-occluder = SubResource("OccluderPolygon2D_tbgi4")
-occluder_light_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Wall2"]
-modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
->>>>>>> 3ce7448b5b29146167d5f949c938c51176695a61
 light_mask = 6
 visibility_layer = 4
 scale = Vector2(0.493, 20)
@@ -239,12 +217,8 @@ texture_scale = 2.0
 script = ExtResource("4_o6xl0")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="LevelLighting"]
-<<<<<<< HEAD
 position = Vector2(4, -5)
 energy = 0.03
-=======
-energy = 0.1
->>>>>>> 3ce7448b5b29146167d5f949c938c51176695a61
 range_item_cull_mask = 0
 
 [node name="DarkNode" type="Node2D" parent="."]
