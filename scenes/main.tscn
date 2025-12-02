@@ -1,20 +1,272 @@
-[gd_scene load_steps=2 format=3 uid="uid://w7e7vwwg3od6"]
+[gd_scene load_steps=15 format=3 uid="uid://w7e7vwwg3od6"]
 
+[ext_resource type="Texture2D" uid="uid://bst0r57df7sn1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0001.png" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://o4i0ajgy12tg" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Circle/Circle-0002.png" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://evp25um0wbhm" path="res://scenes/menu/prototype_ui.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://b04xrumw5c6vj" path="res://prototyping/scripts/prototype_player.gd" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://yh2vtjudqqe8" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Diamond/Sprite-0006.png" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://5n2r7a3dbkck" path="res://assets/light/point_light_neutral.webp" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://cl10ngm0006cm" path="res://prototyping/scripts/prototype_player_p-light.gd" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://wfggs5s0jjow" path="res://prototyping/scripts/canvas_modulate_prototype.gd" id="6_tipki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
+
+[sub_resource type="Theme" id="Theme_tipki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
+radius = 16.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tefeu"]
+polygon = PackedVector2Array(-4.2, -15.2, -4.2, -14.2, -7.2, -14.2, -7.2, -13.2, -9.2, -13.2, -9.2, -12.2, -10.2, -12.2, -10.2, -11.2, -11.2, -11.2, -11.2, -10.2, -12.2, -10.2, -12.2, -9.2, -13.2, -9.2, -13.2, -7.2, -14.2, -7.2, -14.2, -4.2, -15.2, -4.2, -15.2, 4.200001, -14.2, 4.200001, -14.2, 7.200001, -13.2, 7.200001, -13.2, 9.200001, -12.2, 9.200001, -12.2, 10.200001, -11.2, 10.200001, -11.2, 11.200001, -10.2, 11.200001, -10.2, 12.200001, -9.2, 12.200001, -9.2, 13.200001, -7.2, 13.200001, -7.2, 14.200001, -4.2, 14.200001, -4.2, 15.200001, 4.200001, 15.200001, 4.200001, 14.200001, 7.200001, 14.200001, 7.200001, 13.200001, 9.200001, 13.200001, 9.200001, 12.200001, 10.200001, 12.200001, 10.200001, 11.200001, 11.200001, 11.200001, 11.200001, 10.200001, 12.200001, 10.200001, 12.200001, 9.200001, 13.200001, 9.200001, 13.200001, 7.200001, 14.200001, 7.200001, 14.200001, 4.200001, 15.200001, 4.200001, 15.200001, -4.2, 14.200001, -4.2, 14.200001, -7.2, 13.200001, -7.2, 13.200001, -9.2, 12.200001, -9.2, 12.200001, -10.2, 11.200001, -10.2, 11.200001, -11.2, 10.200001, -11.2, 10.200001, -12.2, 9.200001, -12.2, 9.200001, -13.2, 7.200001, -13.2, 7.200001, -14.2, 4.200001, -14.2, 4.200001, -15.2)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tbgi4"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6xl0"]
+polygon = PackedVector2Array(5, -16, -5, -16, -16, -5.8, -16, 5.700001, -5, 15.9, 5.700001, 16, 15.9, 5, 16, -5.8)
 
 [node name="Main" type="Node2D"]
 
-[node name="LevelLighting" type="Node2D" parent="."]
-position = Vector2(1100, 600)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="LightNode" type="Node2D" parent="."]
-position = Vector2(500, 400)
+[node name="Control" parent="CanvasLayer" instance=ExtResource("1_o5qli")]
+layout_direction = 2
+offset_top = -2.0
+offset_bottom = -2.0
+
+[node name="Panel" parent="CanvasLayer/Control/VBoxContainer" index="0"]
+layout_direction = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="VBoxContainer2" parent="CanvasLayer/Control/VBoxContainer/Panel" index="0"]
+layout_direction = 0
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel/VBoxContainer2" index="0"]
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel/VBoxContainer2" index="1"]
+text = "Light point size"
+
+[node name="Panel2" parent="CanvasLayer/Control/VBoxContainer" index="1"]
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer2" index="0"]
+max_value = 1.5
+step = 0.02
+value = 0.72
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer2" index="1"]
+text = "Light point intensity"
+
+[node name="Panel3" parent="CanvasLayer/Control/VBoxContainer" index="2"]
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel3/VBoxContainer2" index="0"]
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel3/VBoxContainer2" index="1"]
+text = "Dark point size"
+
+[node name="Panel4" parent="CanvasLayer/Control/VBoxContainer" index="3"]
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel4/VBoxContainer2" index="0"]
+max_value = 1.5
+step = 0.02
+value = 0.72
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel4/VBoxContainer2" index="1"]
+text = "Dark point intensity"
+
+[node name="Panel5" parent="CanvasLayer/Control/VBoxContainer" index="4"]
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel5/VBoxContainer2" index="0"]
+max_value = 5.0
+step = 0.2
+value = 2.0
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel5/VBoxContainer2" index="1"]
+text = "Static light point size"
+
+[node name="Panel6" parent="CanvasLayer/Control/VBoxContainer" index="5"]
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel6/VBoxContainer2" index="0"]
+max_value = 1.5
+step = 0.02
+value = 0.3
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel6/VBoxContainer2" index="1"]
+text = "Static light point intensity"
+
+[node name="Panel7" parent="CanvasLayer/Control/VBoxContainer" index="6"]
+custom_minimum_size = Vector2(300, 100)
+layout_direction = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+
+[node name="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2" index="0"]
+modulate = Color(0.99215686, 0, 0, 1)
+theme = SubResource("Theme_tipki")
+max_value = 255.0
+step = 4.0
+value = 52.0
+
+[node name="HSlider2" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2" index="1"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 255.0
+step = 4.0
+value = 52.0
+tick_count = 1
+
+[node name="HSlider3" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2" index="2"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 255.0
+step = 4.0
+value = 52.0
+tick_count = 1
+
+[node name="HSlider4" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2" index="3"]
+layout_mode = 2
+step = 2.0
+value = 100.0
+tick_count = 1
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2" index="4"]
+text = "Background colours"
+
+[node name="Node2D" type="Node2D" parent="."]
+light_mask = 0
+scale = Vector2(900, 900)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+light_mask = 8
+visibility_layer = 8
+scale = Vector2(0.055573985, 0.031105088)
+texture = ExtResource("1_0wfyh")
+centered = false
+
+[node name="LightNode" type="CharacterBody2D" parent="."]
+position = Vector2(599, 267)
+script = ExtResource("2_tefeu")
+
+[node name="PointLight2D" type="PointLight2D" parent="LightNode"]
+energy = 0.72
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+shadow_item_cull_mask = 14
+texture = ExtResource("3_tefeu")
+script = ExtResource("4_o6xl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="LightNode"]
+texture = ExtResource("1_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightNode"]
+shape = SubResource("CircleShape2D_tefeu")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LightNode"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_tefeu")
+
+[node name="Wall" type="Node2D" parent="."]
+position = Vector2(681, 443)
+scale = Vector2(7.5672183, 0.4142582)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Wall2" type="Node2D" parent="."]
+position = Vector2(681, 443)
+scale = Vector2(7.5672183, 0.4142582)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall2"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall2"]
+modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="LevelLighting" type="Node2D" parent="."]
+position = Vector2(675, 240)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="LevelLighting"]
+color = Color(0.19434926, 0.19434929, 0.1943492, 1)
+script = ExtResource("6_tipki")
+
+[node name="PointLight2D" type="PointLight2D" parent="LevelLighting"]
+energy = 0.3
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_filter_smooth = 1.5
+shadow_item_cull_mask = 1023
+texture = ExtResource("3_tefeu")
+texture_scale = 2.0
+script = ExtResource("4_o6xl0")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LevelLighting"]
+energy = 0.1
+range_item_cull_mask = 0
 
 [node name="DarkNode" type="Node2D" parent="."]
-position = Vector2(750, 400)
+position = Vector2(756, 278)
 
-[node name="Control" parent="." instance=ExtResource("1_o5qli")]
-offset_right = 1600.0
-offset_bottom = 900.0
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DarkNode"]
+occluder = SubResource("OccluderPolygon2D_o6xl0")
+occluder_light_mask = 2
 
-[editable path="Control"]
+[node name="Sprite2D" type="Sprite2D" parent="DarkNode"]
+light_mask = 2
+texture = ExtResource("3_tbgi4")
+
+[node name="PointLight2D" type="PointLight2D" parent="DarkNode"]
+energy = 0.72
+blend_mode = 1
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_item_cull_mask = 7
+texture = ExtResource("3_tefeu")
+script = ExtResource("4_o6xl0")
+
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel/VBoxContainer2/HSlider" to="LightNode/PointLight2D" method="_on_radius_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer2/HSlider" to="LightNode/PointLight2D" method="_on_intensity_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel3/VBoxContainer2/HSlider" to="DarkNode/PointLight2D" method="_on_radius_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel4/VBoxContainer2/HSlider" to="DarkNode/PointLight2D" method="_on_intensity_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel5/VBoxContainer2/HSlider" to="LevelLighting/PointLight2D" method="_on_radius_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel6/VBoxContainer2/HSlider" to="LevelLighting/PointLight2D" method="_on_intensity_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2/HSlider" to="LevelLighting/CanvasModulate" method="_on_r_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2/HSlider2" to="LevelLighting/CanvasModulate" method="_on_g_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2/HSlider3" to="LevelLighting/CanvasModulate" method="_on_b_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer2/HSlider4" to="LevelLighting/CanvasModulate" method="_on_a_value_changed"]
+
+[editable path="CanvasLayer/Control"]
