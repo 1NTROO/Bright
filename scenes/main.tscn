@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://w7e7vwwg3od6"]
+[gd_scene load_steps=2 format=3 uid="uid://w7e7vwwg3od6"]
+
+[ext_resource type="PackedScene" uid="uid://evp25um0wbhm" path="res://scenes/menu/prototype_ui.tscn" id="1_o5qli"]
 
 [node name="Main" type="Node2D"]
+
+[node name="LevelLighting" type="Node2D" parent="."]
+position = Vector2(1100, 600)
+
+[node name="LightNode" type="Node2D" parent="."]
+position = Vector2(500, 400)
+
+[node name="DarkNode" type="Node2D" parent="."]
+position = Vector2(750, 400)
+
+[node name="Control" parent="." instance=ExtResource("1_o5qli")]
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[editable path="Control"]
