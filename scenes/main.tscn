@@ -1,18 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://w7e7vwwg3od6"]
+[gd_scene load_steps=23 format=3 uid="uid://w7e7vwwg3od6"]
 
 [ext_resource type="Texture2D" uid="uid://bst0r57df7sn1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0001.png" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://o4i0ajgy12tg" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Circle/Circle-0002.png" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://evp25um0wbhm" path="res://scenes/menu/prototype_ui.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://b04xrumw5c6vj" path="res://prototyping/scripts/prototype_player.gd" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://cugld60ewb7q8" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0004.png" id="3_85g3d"]
 [ext_resource type="Texture2D" uid="uid://yh2vtjudqqe8" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Diamond/Sprite-0006.png" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://5n2r7a3dbkck" path="res://assets/light/point_light_neutral.webp" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://cl10ngm0006cm" path="res://prototyping/scripts/prototype_player_p-light.gd" id="4_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://w7efsd265ki1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0001.png" id="4_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://cknd2mm4sdj15" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0005.png" id="5_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://3yvmcscovxjq" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0006.png" id="6_eb6dy"]
 [ext_resource type="Script" uid="uid://wfggs5s0jjow" path="res://prototyping/scripts/canvas_modulate_prototype.gd" id="6_tipki"]
+[ext_resource type="Shader" uid="uid://bx0vm4cox2nyt" path="res://assets/light/colour.gdshader" id="13_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://dv5pi8j6oqt43" path="res://icon.svg" id="13_trceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
 
 [sub_resource type="Theme" id="Theme_tipki"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tbgi4"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_choun"]
+polygon = PackedVector2Array(-2.1999998, -8.2, -2.1999998, -7.2, -4.2, -7.2, -4.2, -6.2, -6.2, -6.2, -6.2, -5.2, -7.2, -5.2, -7.2, -4.2, -9.2, -4.2, -9.2, -3.1999998, -11.2, -3.1999998, -11.2, -2.1999998, -13.2, -2.1999998, -13.2, -1.1999998, -15.2, -1.1999998, -15.2, 1.2000008, -13.2, 1.2000008, -13.2, 2.2000008, -11.2, 2.2000008, -11.2, 3.2000008, -9.2, 3.2000008, -9.2, 4.200001, -8.2, 4.200001, -8.2, 5.200001, -6.2, 5.200001, -6.2, 6.200001, -4.2, 6.200001, -4.2, 7.200001, -2.1999998, 7.200001, -2.1999998, 8.200001, 2.2000008, 8.200001, 2.2000008, 7.200001, 4.200001, 7.200001, 4.200001, 6.200001, 6.200001, 6.200001, 6.200001, 5.200001, 8.200001, 5.200001, 8.200001, 4.200001, 9.200001, 4.200001, 9.200001, 3.2000008, 11.200001, 3.2000008, 11.200001, 2.2000008, 13.200001, 2.2000008, 13.200001, 1.2000008, 15.200001, 1.2000008, 15.200001, -1.1999998, 13.200001, -1.1999998, 13.200001, -2.1999998, 11.200001, -2.1999998, 11.200001, -3.1999998, 9.200001, -3.1999998, 9.200001, -4.2, 7.200001, -4.2, 7.200001, -5.2, 6.200001, -5.2, 6.200001, -6.2, 4.200001, -6.2, 4.200001, -7.2, 2.2000008, -7.2, 2.2000008, -8.2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
 radius = 16.0
@@ -20,11 +32,16 @@ radius = 16.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tefeu"]
 polygon = PackedVector2Array(-4.2, -15.2, -4.2, -14.2, -7.2, -14.2, -7.2, -13.2, -9.2, -13.2, -9.2, -12.2, -10.2, -12.2, -10.2, -11.2, -11.2, -11.2, -11.2, -10.2, -12.2, -10.2, -12.2, -9.2, -13.2, -9.2, -13.2, -7.2, -14.2, -7.2, -14.2, -4.2, -15.2, -4.2, -15.2, 4.200001, -14.2, 4.200001, -14.2, 7.200001, -13.2, 7.200001, -13.2, 9.200001, -12.2, 9.200001, -12.2, 10.200001, -11.2, 10.200001, -11.2, 11.200001, -10.2, 11.200001, -10.2, 12.200001, -9.2, 12.200001, -9.2, 13.200001, -7.2, 13.200001, -7.2, 14.200001, -4.2, 14.200001, -4.2, 15.200001, 4.200001, 15.200001, 4.200001, 14.200001, 7.200001, 14.200001, 7.200001, 13.200001, 9.200001, 13.200001, 9.200001, 12.200001, 10.200001, 12.200001, 10.200001, 11.200001, 11.200001, 11.200001, 11.200001, 10.200001, 12.200001, 10.200001, 12.200001, 9.200001, 13.200001, 9.200001, 13.200001, 7.200001, 14.200001, 7.200001, 14.200001, 4.200001, 15.200001, 4.200001, 15.200001, -4.2, 14.200001, -4.2, 14.200001, -7.2, 13.200001, -7.2, 13.200001, -9.2, 12.200001, -9.2, 12.200001, -10.2, 11.200001, -10.2, 11.200001, -11.2, 10.200001, -11.2, 10.200001, -12.2, 9.200001, -12.2, 9.200001, -13.2, 7.200001, -13.2, 7.200001, -14.2, 4.200001, -14.2, 4.200001, -15.2)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tbgi4"]
-polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6xl0"]
 polygon = PackedVector2Array(5, -16, -5, -16, -16, -5.8, -16, 5.700001, -5, 15.9, 5.700001, 16, 15.9, 5, 16, -5.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
+shader = ExtResource("13_a8y0u")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0000001425
+shader_parameter/pattern = 1
+shader_parameter/inside = true
+shader_parameter/add_margins = false
 
 [node name="Main" type="Node2D"]
 
@@ -151,15 +168,172 @@ text = "Background colours"
 light_mask = 0
 scale = Vector2(900, 900)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="BackgroundSprite" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.45840502, 0.45840508, 0.45840502, 1)
 light_mask = 8
 visibility_layer = 8
 scale = Vector2(0.055573985, 0.031105088)
 texture = ExtResource("1_0wfyh")
 centered = false
 
+[node name="LevelObjs" type="Node2D" parent="Node2D"]
+visibility_layer = 8
+z_index = 1
+scale = Vector2(0.0011111111, 0.0011111111)
+
+[node name="Wall" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(57, 440)
+scale = Vector2(6.7533445, 1.5058805)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Wall2" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(1545.0001, 459)
+scale = Vector2(6.7533445, 1.5058805)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall2"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall2"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Wall3" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(834.99994, 863)
+scale = Vector2(-145.11658, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall3"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall3"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Wall4" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(860.00006, -8.999939)
+scale = Vector2(-145.11658, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall4"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall4"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Table" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 0
+visibility_layer = 8
+position = Vector2(1329.0001, 727)
+scale = Vector2(-21.061544, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Table"]
+visible = false
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_tbgi4")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Table"]
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_0wfyh")
+
+[node name="Node2D" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1072, 239)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D"]
+texture = ExtResource("3_85g3d")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_choun")
+
+[node name="Node2D2" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(952.0001, 299.99997)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D2"]
+texture = ExtResource("4_ya4ey")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D2"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_choun")
+
+[node name="Node2D3" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1076, 364)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D3"]
+position = Vector2(-0.19999999, 0)
+texture = ExtResource("5_eb6dy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D3"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_choun")
+
+[node name="Node2D4" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1193, 299)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D4"]
+position = Vector2(-0.19999999, 0)
+texture = ExtResource("6_eb6dy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D4"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_choun")
+
 [node name="LightNode" type="CharacterBody2D" parent="."]
-position = Vector2(599, 267)
+position = Vector2(235, 688)
 script = ExtResource("2_tefeu")
 
 [node name="PointLight2D" type="PointLight2D" parent="LightNode"]
@@ -169,6 +343,7 @@ shadow_enabled = true
 shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 14
 texture = ExtResource("3_tefeu")
+texture_scale = 0.3
 script = ExtResource("4_o6xl0")
 
 [node name="Sprite2D" type="Sprite2D" parent="LightNode"]
@@ -181,35 +356,18 @@ shape = SubResource("CircleShape2D_tefeu")
 visible = false
 occluder = SubResource("OccluderPolygon2D_tefeu")
 
-[node name="Wall" type="Node2D" parent="."]
-position = Vector2(681, 443)
-scale = Vector2(7.5672183, 0.4142582)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall"]
-light_mask = 4
-visibility_layer = 4
-scale = Vector2(0.493, 19.999998)
-occluder = SubResource("OccluderPolygon2D_tbgi4")
-occluder_light_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Wall"]
-modulate = Color(0, 0, 0, 1)
-light_mask = 6
-visibility_layer = 4
-scale = Vector2(0.493, 20)
-texture = ExtResource("1_0wfyh")
-
 [node name="LevelLighting" type="Node2D" parent="."]
-position = Vector2(675, 240)
+position = Vector2(786, 406)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="LevelLighting"]
-color = Color(0.19434926, 0.19434929, 0.1943492, 1)
+visible = false
+color = Color(0.40832946, 0.40832946, 0.40832946, 1)
 script = ExtResource("6_tipki")
 
 [node name="PointLight2D" type="PointLight2D" parent="LevelLighting"]
-energy = 0.3
+visible = false
+energy = 0.05
 range_item_cull_mask = 13
-shadow_enabled = true
 shadow_filter_smooth = 1.5
 shadow_item_cull_mask = 1023
 texture = ExtResource("3_tefeu")
@@ -218,11 +376,12 @@ script = ExtResource("4_o6xl0")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="LevelLighting"]
 position = Vector2(4, -5)
-energy = 0.03
+color = Color(1, 1, 0.6313726, 1)
+energy = 0.19
 range_item_cull_mask = 0
 
 [node name="DarkNode" type="Node2D" parent="."]
-position = Vector2(756, 278)
+position = Vector2(252, 158)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="DarkNode"]
 occluder = SubResource("OccluderPolygon2D_o6xl0")
@@ -233,13 +392,44 @@ light_mask = 2
 texture = ExtResource("3_tbgi4")
 
 [node name="PointLight2D" type="PointLight2D" parent="DarkNode"]
-energy = 0.72
+energy = 0.25
 blend_mode = 1
 range_item_cull_mask = 13
 shadow_enabled = true
-shadow_item_cull_mask = 7
+shadow_item_cull_mask = 13
 texture = ExtResource("3_tefeu")
+texture_scale = 2.5
 script = ExtResource("4_o6xl0")
+
+[node name="DarkNode2" type="Node2D" parent="."]
+light_mask = 9
+visibility_layer = 9
+z_index = 50
+position = Vector2(1366, 711)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DarkNode2"]
+occluder = SubResource("OccluderPolygon2D_o6xl0")
+occluder_light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DarkNode2"]
+light_mask = 2
+texture = ExtResource("3_tbgi4")
+
+[node name="PointLight2D" type="PointLight2D" parent="DarkNode2"]
+energy = 0.4
+blend_mode = 1
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_item_cull_mask = 13
+texture = ExtResource("3_tefeu")
+texture_scale = 1.39
+script = ExtResource("4_o6xl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.0954857, 1.0954857, 1.0954857, 1)
+material = SubResource("ShaderMaterial_trceg")
+position = Vector2(729, 526)
+texture = ExtResource("13_trceg")
 
 [connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel/VBoxContainer2/HSlider" to="LightNode/PointLight2D" method="_on_radius_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer2/HSlider" to="LightNode/PointLight2D" method="_on_intensity_slider_value_changed"]

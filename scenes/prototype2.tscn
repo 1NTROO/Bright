@@ -1,0 +1,177 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtuw0v42y1eng"]
+
+[ext_resource type="Texture2D" uid="uid://bst0r57df7sn1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0001.png" id="1_lirql"]
+[ext_resource type="Texture2D" uid="uid://cugld60ewb7q8" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0004.png" id="2_c5w8s"]
+[ext_resource type="Texture2D" uid="uid://w7efsd265ki1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0001.png" id="3_855rm"]
+[ext_resource type="Texture2D" uid="uid://cknd2mm4sdj15" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0005.png" id="4_3osnq"]
+[ext_resource type="Texture2D" uid="uid://3yvmcscovxjq" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Rhombus/Rhombus-0006.png" id="5_dj82a"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a87wo"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kcibo"]
+polygon = PackedVector2Array(-2.1999998, -8.2, -2.1999998, -7.2, -4.2, -7.2, -4.2, -6.2, -6.2, -6.2, -6.2, -5.2, -7.2, -5.2, -7.2, -4.2, -9.2, -4.2, -9.2, -3.1999998, -11.2, -3.1999998, -11.2, -2.1999998, -13.2, -2.1999998, -13.2, -1.1999998, -15.2, -1.1999998, -15.2, 1.2000008, -13.2, 1.2000008, -13.2, 2.2000008, -11.2, 2.2000008, -11.2, 3.2000008, -9.2, 3.2000008, -9.2, 4.200001, -8.2, 4.200001, -8.2, 5.200001, -6.2, 5.200001, -6.2, 6.200001, -4.2, 6.200001, -4.2, 7.200001, -2.1999998, 7.200001, -2.1999998, 8.200001, 2.2000008, 8.200001, 2.2000008, 7.200001, 4.200001, 7.200001, 4.200001, 6.200001, 6.200001, 6.200001, 6.200001, 5.200001, 8.200001, 5.200001, 8.200001, 4.200001, 9.200001, 4.200001, 9.200001, 3.2000008, 11.200001, 3.2000008, 11.200001, 2.2000008, 13.200001, 2.2000008, 13.200001, 1.2000008, 15.200001, 1.2000008, 15.200001, -1.1999998, 13.200001, -1.1999998, 13.200001, -2.1999998, 11.200001, -2.1999998, 11.200001, -3.1999998, 9.200001, -3.1999998, 9.200001, -4.2, 7.200001, -4.2, 7.200001, -5.2, 6.200001, -5.2, 6.200001, -6.2, 4.200001, -6.2, 4.200001, -7.2, 2.2000008, -7.2, 2.2000008, -8.2)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+light_mask = 0
+scale = Vector2(900, 900)
+
+[node name="LevelObjs" type="Node2D" parent="Node2D"]
+visibility_layer = 8
+z_index = 1
+scale = Vector2(0.0011111111, 0.0011111111)
+
+[node name="Wall" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(57, 440)
+scale = Vector2(6.7533445, 1.5058805)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_a87wo")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_lirql")
+
+[node name="Wall2" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(1545.0001, 459)
+scale = Vector2(6.7533445, 1.5058805)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall2"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_a87wo")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall2"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_lirql")
+
+[node name="Wall3" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(834.99994, 863)
+scale = Vector2(-145.11658, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall3"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_a87wo")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall3"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_lirql")
+
+[node name="Wall4" type="Node2D" parent="Node2D/LevelObjs"]
+visibility_layer = 8
+position = Vector2(860.00006, -8.999939)
+scale = Vector2(-145.11658, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Wall4"]
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_a87wo")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Wall4"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_lirql")
+
+[node name="Table" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 0
+visibility_layer = 8
+position = Vector2(1329.0001, 727)
+scale = Vector2(-21.061544, -0.22030117)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Table"]
+visible = false
+light_mask = 4
+visibility_layer = 4
+scale = Vector2(0.493, 19.999998)
+occluder = SubResource("OccluderPolygon2D_a87wo")
+occluder_light_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Table"]
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+light_mask = 6
+visibility_layer = 4
+scale = Vector2(0.493, 20)
+texture = ExtResource("1_lirql")
+
+[node name="Node2D" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1072, 239)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D"]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+texture = ExtResource("2_c5w8s")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kcibo")
+
+[node name="Node2D2" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(952.0001, 299.99997)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D2"]
+modulate = Color(1.4369954, 1.4369954, 1.4369954, 1)
+texture = ExtResource("3_855rm")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D2"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kcibo")
+
+[node name="Node2D3" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1076, 364)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D3"]
+position = Vector2(-0.19999999, 0)
+texture = ExtResource("4_3osnq")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D3"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kcibo")
+
+[node name="Node2D4" type="Node2D" parent="Node2D/LevelObjs"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(1193, 299)
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/LevelObjs/Node2D4"]
+position = Vector2(-0.19999999, 0)
+texture = ExtResource("5_dj82a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/LevelObjs/Node2D4"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kcibo")

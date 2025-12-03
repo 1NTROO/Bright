@@ -55,3 +55,7 @@ down={
 2d_render/layer_2="CharacterObj"
 2d_render/layer_3="LevelObj"
 2d_render/layer_4="BackgroundMask"
+
+[rendering]
+
+viewport/hdr_2d=true
