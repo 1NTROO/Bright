@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://dw187u2wddo8b"]
+
+[ext_resource type="Script" uid="uid://b04xrumw5c6vj" path="res://prototyping/scripts/prototype_player.gd" id="1_yh3br"]
+[ext_resource type="Texture2D" uid="uid://5n2r7a3dbkck" path="res://assets/light/point_light_neutral.webp" id="2_gaki2"]
+[ext_resource type="Script" uid="uid://cl10ngm0006cm" path="res://prototyping/scripts/prototype_player_p-light.gd" id="3_40q01"]
+[ext_resource type="Shader" uid="uid://bx0vm4cox2nyt" path="res://assets/light/outline.gdshader" id="4_oucg2"]
+[ext_resource type="Texture2D" uid="uid://kgtm3bqdw0a5" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0004.png" id="5_wau3w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8y0u"]
+shader = ExtResource("4_oucg2")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0000001425
+shader_parameter/pattern = 1
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
+size = Vector2(32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a8y0u"]
+polygon = PackedVector2Array(-15.2, -15.2, -15.2, 15.200001, 15.200001, 15.200001, 15.200001, -15.2)
+
+[node name="LightNode" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_yh3br")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+range_layer_min = -5
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+shadow_item_cull_mask = 14
+texture = ExtResource("2_gaki2")
+texture_scale = 0.5
+script = ExtResource("3_40q01")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_a8y0u")
+texture = ExtResource("5_wau3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a8y0u")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_a8y0u")
