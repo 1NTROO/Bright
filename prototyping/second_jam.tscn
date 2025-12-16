@@ -1,0 +1,366 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyq78hr7k1px6"]
+
+[ext_resource type="Texture2D" uid="uid://bst0r57df7sn1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0001.png" id="1_vpevh"]
+[ext_resource type="Script" uid="uid://b8pefigljnwgy" path="res://prototyping/interactible_obj.gd" id="2_ig4yj"]
+[ext_resource type="Script" uid="uid://boxb8cp1fj4em" path="res://prototyping/dialogue_button.gd" id="2_lqmxg"]
+[ext_resource type="Texture2D" uid="uid://dv5pi8j6oqt43" path="res://icon.svg" id="2_s7pjn"]
+[ext_resource type="Script" uid="uid://dxx8iaotnnc0i" path="res://prototyping/dialogue_option.gd" id="3_3jhek"]
+[ext_resource type="Script" uid="uid://c6mayed2volb8" path="res://prototyping/sin_measure_slider.gd" id="5_lqmxg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Area2D" parent="." node_paths=PackedStringArray("DialoguePanel")]
+position = Vector2(774, 357)
+script = ExtResource("2_ig4yj")
+DialoguePanel = NodePath("../UICanvasLayer/Control/DialoguePopup")
+Monologue = Array[String](["You feel a strange affection towards this object."])
+DialogueText = Array[String](["Affection? More like attraction...", "Take a breath. It's probably just comfort.", "Slowly back away."])
+DialogueModifiers = {
+0: ["Lust"],
+1: ["Wrath"],
+2: ["None"]
+}
+DialogueModifierValues = {
+0: [20.0],
+1: [-5.0],
+2: [0.0]
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_s7pjn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D"]
+polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+layer = 1024
+
+[node name="Control" type="Control" parent="UICanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="DialoguePopup" type="Panel" parent="UICanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = 50.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/DialoguePopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -80.0
+offset_right = 604.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContaner4" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
+custom_minimum_size = Vector2(1200, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner4"]
+modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+layout_mode = 2
+
+[node name="MonologueBox" type="HBoxContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner4" node_paths=PackedStringArray("TextNode")]
+layout_mode = 2
+script = ExtResource("3_3jhek")
+IsMonologue = true
+TextNode = NodePath("Monologue")
+
+[node name="Monologue" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner4/MonologueBox"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "You feel a strange affection to this object."
+
+[node name="MarginContaner" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
+custom_minimum_size = Vector2(1200, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner"]
+modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+layout_mode = 2
+
+[node name="DialogueBox" type="HBoxContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner" node_paths=PackedStringArray("ModifierNode", "TextNode", "ModifierValueNode")]
+layout_mode = 2
+script = ExtResource("3_3jhek")
+ModifierNode = NodePath("RichTextLabel2")
+TextNode = NodePath("RichTextLabel")
+ModifierValueNode = NodePath("Button")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+icon = ExtResource("1_vpevh")
+script = ExtResource("2_lqmxg")
+Dict = {
+"Lust": 20.0
+}
+
+[node name="MarginContaner2" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
+custom_minimum_size = Vector2(1200, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2"]
+modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+layout_mode = 2
+
+[node name="DialogueBox" type="HBoxContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2" node_paths=PackedStringArray("ModifierNode", "TextNode", "ModifierValueNode")]
+layout_mode = 2
+script = ExtResource("3_3jhek")
+DialogueIndex = 1
+ModifierNode = NodePath("RichTextLabel2")
+TextNode = NodePath("RichTextLabel")
+ModifierValueNode = NodePath("Button")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+icon = ExtResource("1_vpevh")
+script = ExtResource("2_lqmxg")
+Dict = {
+"Wrath": -5.0
+}
+
+[node name="MarginContaner3" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
+custom_minimum_size = Vector2(1200, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3"]
+modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+layout_mode = 2
+
+[node name="DialogueBox" type="HBoxContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3" node_paths=PackedStringArray("ModifierNode", "TextNode", "ModifierValueNode")]
+layout_mode = 2
+script = ExtResource("3_3jhek")
+DialogueIndex = 2
+ModifierNode = NodePath("RichTextLabel2")
+TextNode = NodePath("RichTextLabel")
+ModifierValueNode = NodePath("Button")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+icon = ExtResource("1_vpevh")
+script = ExtResource("2_lqmxg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Lust"
+
+[node name="LustBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Lust"
+
+[node name="Panel2" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Gluttony
+"
+
+[node name="GluttonyBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel2/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Gluttony"
+
+[node name="Panel3" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Greed"
+
+[node name="GreedBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel3/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Greed"
+
+[node name="Panel4" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Sloth"
+
+[node name="SlothBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel4/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Sloth"
+
+[node name="Panel5" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel5/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Wrath"
+
+[node name="WrathBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel5/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Wrath"
+
+[node name="Panel6" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel6/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Envy"
+
+[node name="EnvyBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel6/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Envy"
+
+[node name="Panel7" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/VBoxContainer/Panel7"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Pride"
+
+[node name="PrideBar" type="ProgressBar" parent="UICanvasLayer/Control/VBoxContainer/Panel7/VBoxContainer"]
+custom_minimum_size = Vector2(400, 15)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("5_lqmxg")
+ThisSin = "Pride"
