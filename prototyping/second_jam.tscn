@@ -40,6 +40,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1600.0
 offset_bottom = 900.0
+metadata/_edit_use_anchors_ = true
 
 [node name="DialoguePopup" type="Panel" parent="UICanvasLayer/Control"]
 layout_mode = 1
@@ -48,12 +49,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
+offset_left = -500.0
 offset_top = 50.0
-offset_right = 600.0
+offset_right = 500.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control/DialoguePopup"]
 layout_mode = 1
@@ -62,15 +64,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -80.0
-offset_right = 604.0
-offset_bottom = 80.0
+offset_left = -500.0
+offset_top = -106.0
+offset_right = 500.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="MarginContaner4" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
-custom_minimum_size = Vector2(1200, 50)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner4"]
@@ -84,13 +87,13 @@ IsMonologue = true
 TextNode = NodePath("Monologue")
 
 [node name="Monologue" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner4/MonologueBox"]
-custom_minimum_size = Vector2(1200, 0)
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "You feel a strange affection to this object."
 
 [node name="MarginContaner" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
-custom_minimum_size = Vector2(1200, 50)
+custom_minimum_size = Vector2(1000, 50)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner"]
@@ -100,25 +103,24 @@ layout_mode = 2
 [node name="DialogueBox" type="HBoxContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner" node_paths=PackedStringArray("ModifierNode", "TextNode", "ModifierValueNode")]
 layout_mode = 2
 script = ExtResource("3_3jhek")
-ModifierNode = NodePath("RichTextLabel2")
+ModifierNode = NodePath("")
 TextNode = NodePath("RichTextLabel")
-ModifierValueNode = NodePath("Button")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/normal_font_size = 30
-fit_content = true
+ModifierValueNode = NodePath("Panel/Button")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 
-[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox"]
+modulate = Color(2.4610868, 2.7075353, 2.7075353, 1)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner/DialogueBox/Panel"]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 50.0
 icon = ExtResource("1_vpevh")
 script = ExtResource("2_lqmxg")
 Dict = {
@@ -126,7 +128,7 @@ Dict = {
 }
 
 [node name="MarginContaner2" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
-custom_minimum_size = Vector2(1200, 50)
+custom_minimum_size = Vector2(1000, 50)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2"]
@@ -137,24 +139,24 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("3_3jhek")
 DialogueIndex = 1
-ModifierNode = NodePath("RichTextLabel2")
+ModifierNode = NodePath("")
 TextNode = NodePath("RichTextLabel")
-ModifierValueNode = NodePath("Button")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 30
+ModifierValueNode = NodePath("Panel/Button")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 
-[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox"]
+modulate = Color(2.4610868, 2.7075353, 2.7075353, 1)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner2/DialogueBox/Panel"]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 50.0
 icon = ExtResource("1_vpevh")
 script = ExtResource("2_lqmxg")
 Dict = {
@@ -162,7 +164,7 @@ Dict = {
 }
 
 [node name="MarginContaner3" type="MarginContainer" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer"]
-custom_minimum_size = Vector2(1200, 50)
+custom_minimum_size = Vector2(1000, 50)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3"]
@@ -173,28 +175,30 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("3_3jhek")
 DialogueIndex = 2
-ModifierNode = NodePath("RichTextLabel2")
+ModifierNode = NodePath("")
 TextNode = NodePath("RichTextLabel")
-ModifierValueNode = NodePath("Button")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 30
+ModifierValueNode = NodePath("Panel/Button")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 
-[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Panel" type="Panel" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox"]
+modulate = Color(2.4610868, 2.7075353, 2.7075353, 1)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+
+[node name="Button" type="Button" parent="UICanvasLayer/Control/DialoguePopup/VBoxContainer/MarginContaner3/DialogueBox/Panel"]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 50.0
+scale = Vector2(1.0133631, 1.026055)
 icon = ExtResource("1_vpevh")
 script = ExtResource("2_lqmxg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -202,6 +206,7 @@ anchor_right = 1.0
 offset_left = -400.0
 offset_bottom = 400.0
 grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="UICanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

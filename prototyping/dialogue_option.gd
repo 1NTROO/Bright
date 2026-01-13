@@ -12,9 +12,5 @@ extends HBoxContainer
 func assign_monologue(text: String) -> void:
 	TextNode.text = text
 
-func assign_dialogue(mod: Array, text: String, mod_value: Array) -> void:
-	for i in len(mod):
-		ModifierNode.text += "[" + mod[i] + "] "
+func assign_dialogue(text: String) -> void:
 	TextNode.text = text
-	for i in len(mod_value):
-		ModifierValueNode.text += str(mod_value[i]) + " " + mod[i] + " "

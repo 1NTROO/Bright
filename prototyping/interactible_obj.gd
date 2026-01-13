@@ -2,6 +2,8 @@ extends Area2D
 
 @export var DialoguePanel: Panel
 
+var isMouseOver: bool = false
+
 @export_subgroup("Dialogue Options")
 @export var Monologue: Array[String]
 @export var DialogueText: Array[String]
@@ -28,8 +30,14 @@ func _ready() -> void:
 		
 	dialogue_setup()
 
+func _mouse_enter() -> void:
+	isMouseOver = true
+	
+func _mouse_exit() -> void:
+	isMouseOver = false
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and isMouseOver:
 		if (DialoguePanel == null): return
 		dialogue_visibility()
 		GlobalSinManager.ActiveInteractible = self
@@ -41,12 +49,10 @@ func dialogue_setup() -> void:
 	var dialogue_boxes = DialoguePanel.find_children("DialogueBox")
 	for i in len(DialogueOptionList):
 		if (dialogue_boxes[i].DialogueIndex != i): continue
-		var mod_text 		= DialogueOptionList[i].dialogue_modifiers.keys()
-		var dialogue_text 	= DialogueOptionList[i].dialogue_text
-		var mod_value 		= DialogueOptionList[i].dialogue_modifiers.values()
-		dialogue_boxes[i].assign_dialogue(mod_text, dialogue_text, mod_value)
-	
+		var dialogue_text = DialogueOptionList[i].dialogue_text
+		dialogue_boxes[i].assign_dialogue(dialogue_text)
 
 func dialogue_visibility(enable: bool = true) -> void:
 	if (DialoguePanel == null): return
+	dialogue_setup()
 	DialoguePanel.visible = enable

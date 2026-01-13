@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbwdw7ksurruy"]
+
+[ext_resource type="Shader" uid="uid://bx0vm4cox2nyt" path="res://assets/light/outline.gdshader" id="1_qwle6"]
+[ext_resource type="Texture2D" uid="uid://dr1n6njmya60m" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Diamond/Sprite-0007.png" id="2_2dh80"]
+[ext_resource type="Texture2D" uid="uid://5n2r7a3dbkck" path="res://assets/light/point_light_neutral.webp" id="3_tpnio"]
+[ext_resource type="Script" uid="uid://cl10ngm0006cm" path="res://prototyping/scripts/prototype_player_p-light.gd" id="4_c7rhm"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6xl0"]
+polygon = PackedVector2Array(5, -16, -5, -16, -16, -5.8, -16, 5.700001, -5, 15.9, 5.700001, 16, 15.9, 5, 16, -5.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbj1t"]
+shader = ExtResource("1_qwle6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+
+[node name="DarkNode" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_o6xl0")
+occluder_light_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+light_mask = 2
+material = SubResource("ShaderMaterial_jbj1t")
+scale = Vector2(2, 2)
+texture = ExtResource("2_2dh80")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.25
+blend_mode = 1
+range_layer_min = -1024
+range_layer_max = 1023
+range_item_cull_mask = 13
+shadow_enabled = true
+shadow_item_cull_mask = 12
+texture = ExtResource("3_tpnio")
+texture_scale = 3.47
+script = ExtResource("4_c7rhm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-1.1999998, -15.2, -1.1999998, -14.2, -2.1999998, -14.2, -2.1999998, -13.2, -3.1999998, -13.2, -3.1999998, -12.2, -4.2, -12.2, -4.2, -11.2, -5.2, -11.2, -5.2, -10.2, -6.2, -10.2, -6.2, -9.2, -7.2, -9.2, -7.2, -8.2, -8.2, -8.2, -8.2, -7.2, -9.2, -7.2, -9.2, -6.2, -10.2, -6.2, -10.2, -5.2, -11.2, -5.2, -11.2, -4.2, -12.2, -4.2, -12.2, -3.1999998, -13.2, -3.1999998, -13.2, -2.1999998, -14.2, -2.1999998, -14.2, -1.1999998, -15.2, -1.1999998, -15.2, 1.2000008, -14.2, 1.2000008, -14.2, 2.2000008, -13.2, 2.2000008, -13.2, 3.2000008, -12.2, 3.2000008, -12.2, 4.200001, -11.2, 4.200001, -11.2, 5.200001, -10.2, 5.200001, -10.2, 6.200001, -9.2, 6.200001, -9.2, 7.200001, -8.2, 7.200001, -8.2, 8.200001, -7.2, 8.200001, -7.2, 9.200001, -6.2, 9.200001, -6.2, 10.200001, -5.2, 10.200001, -5.2, 11.200001, -4.2, 11.200001, -4.2, 12.200001, -3.1999998, 12.200001, -3.1999998, 13.200001, -2.1999998, 13.200001, -2.1999998, 14.200001, -1.1999998, 14.200001, -1.1999998, 15.200001, 1.2000008, 15.200001, 1.2000008, 14.200001, 2.2000008, 14.200001, 2.2000008, 13.200001, 3.2000008, 13.200001, 3.2000008, 12.200001, 4.200001, 12.200001, 4.200001, 11.200001, 5.200001, 11.200001, 5.200001, 10.200001, 6.200001, 10.200001, 6.200001, 9.200001, 7.200001, 9.200001, 7.200001, 8.200001, 8.200001, 8.200001, 8.200001, 7.200001, 9.200001, 7.200001, 9.200001, 6.200001, 10.200001, 6.200001, 10.200001, 5.200001, 11.200001, 5.200001, 11.200001, 4.200001, 12.200001, 4.200001, 12.200001, 3.2000008, 13.200001, 3.2000008, 13.200001, 2.2000008, 14.200001, 2.2000008, 14.200001, 1.2000008, 15.200001, 1.2000008, 15.200001, -1.1999998, 14.200001, -1.1999998, 14.200001, -2.1999998, 13.200001, -2.1999998, 13.200001, -3.1999998, 12.200001, -3.1999998, 12.200001, -4.2, 11.200001, -4.2, 11.200001, -5.2, 10.200001, -5.2, 10.200001, -6.2, 9.200001, -6.2, 9.200001, -7.2, 8.200001, -7.2, 8.200001, -8.2, 7.200001, -8.2, 7.200001, -9.2, 6.200001, -9.2, 6.200001, -10.2, 5.200001, -10.2, 5.200001, -11.2, 4.200001, -11.2, 4.200001, -12.2, 3.2000008, -12.2, 3.2000008, -13.2, 2.2000008, -13.2, 2.2000008, -14.2, 1.2000008, -14.2, 1.2000008, -15.2)
