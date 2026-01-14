@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cl10ngm0006cm" path="res://prototyping/scripts/prototype_player_p-light.gd" id="4_c7rhm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6xl0"]
-polygon = PackedVector2Array(5, -16, -5, -16, -16, -5.8, -16, 5.700001, -5, 15.9, 5.700001, 16, 15.9, 5, 16, -5.8)
+polygon = PackedVector2Array(8.5, -16.5, -5, -16, -17.5, -5.5, -17, 11, -7, 17.5, 4, 26.5, 24, 32.5, 39, 6.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbj1t"]
 shader = ExtResource("1_qwle6")
