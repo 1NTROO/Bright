@@ -29,7 +29,6 @@ occluder_light_mask = 0
 modulate = Color(0, 0, 0, 1)
 light_mask = 2
 material = SubResource("ShaderMaterial_jbj1t")
-scale = Vector2(2, 2)
 texture = ExtResource("2_2dh80")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

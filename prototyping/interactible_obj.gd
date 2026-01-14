@@ -12,13 +12,15 @@ var isMouseOver: bool = false
 
 class DialogueOption:
 	var dialogue_text: String
-	var dialogue_modifiers: Dictionary
+	var dialogue_modifiers: Array
+	var dialogue_mod_values: Array
 	
 	func initialize(text: String, modifiers: Array, mod_values: Array) -> void:
 		dialogue_text = text
 		for i in len(modifiers):
 			if (mod_values[i] == null): return
-			dialogue_modifiers[modifiers[i]] = mod_values 
+			dialogue_modifiers.append(modifiers[i])
+			dialogue_mod_values.append(mod_values[i]) 
 	
 var DialogueOptionList: Array[DialogueOption]
 
@@ -49,8 +51,11 @@ func dialogue_setup() -> void:
 	var dialogue_boxes = DialoguePanel.find_children("DialogueBox")
 	for i in len(DialogueOptionList):
 		if (dialogue_boxes[i].DialogueIndex != i): continue
-		var dialogue_text = DialogueOptionList[i].dialogue_text
-		dialogue_boxes[i].assign_dialogue(dialogue_text)
+		var current = DialogueOptionList[i]
+		var dialogue_text = current.dialogue_text
+		var dialogue_mods = current.dialogue_modifiers
+		var dialogue_values = current.dialogue_mod_values
+		dialogue_boxes[i].assign_dialogue(dialogue_text, dialogue_mods, dialogue_values)
 
 func dialogue_visibility(enable: bool = true) -> void:
 	if (DialoguePanel == null): return
