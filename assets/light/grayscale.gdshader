@@ -7,9 +7,14 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR = textureLod(screen_texture, SCREEN_UV, 0.0);
-	float avg = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
-	COLOR.rgb = vec3(avg);
+	vec4 tex = texture(screen_texture, SCREEN_UV);
+	float gray = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
+	vec3 result = mix(vec3(gray), tex.rgb, 0);
+	COLOR = vec4(result, tex.a);
+
+	//COLOR = textureLod(screen_texture, SCREEN_UV, 0.0);
+	//float avg = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+	//COLOR.rgb = vec3(avg);
 }
 
 //void light() {
