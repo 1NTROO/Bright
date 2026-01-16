@@ -2,6 +2,7 @@ class_name DialogueButton
 
 extends Button
 
+@onready var DialogueOption = $"../.."
 @export var Dict: Dictionary
 
 func _ready() -> void:
@@ -13,5 +14,4 @@ func set_values(mod: String, val: float) -> void:
 func _pressed() -> void:
 	for sin in Dict:
 		GlobalSinManager.change_value(sin, Dict[sin])
-		
-	GlobalSinManager.end_interaction()
+	DialogueOption.on_press()

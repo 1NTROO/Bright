@@ -9,6 +9,7 @@ var isMouseOver: bool = false
 @export var DialogueText: Array[String]
 @export var DialogueModifiers: Dictionary
 @export var DialogueModifierValues: Dictionary
+@export var CorrectNodeIndex: int
 
 class DialogueOption:
 	var dialogue_text: String
@@ -55,7 +56,10 @@ func dialogue_setup() -> void:
 		var dialogue_text = current.dialogue_text
 		var dialogue_mods = current.dialogue_modifiers
 		var dialogue_values = current.dialogue_mod_values
-		dialogue_boxes[i].assign_dialogue(dialogue_text, dialogue_mods, dialogue_values)
+		
+		var dialogue_correct = false
+		if CorrectNodeIndex == i: dialogue_correct = true
+		dialogue_boxes[i].assign_dialogue(dialogue_text, dialogue_mods, dialogue_values, dialogue_correct)
 
 func dialogue_visibility(enable: bool = true) -> void:
 	if (DialoguePanel == null): return

@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=4 uid="uid://w7e7vwwg3od6"]
+[gd_scene load_steps=43 format=4 uid="uid://w7e7vwwg3od6"]
 
 [ext_resource type="Texture2D" uid="uid://bst0r57df7sn1" path="res://prototyping/assets/Godot-Placeholder-Sprites-main/Square/Square-0001.png" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://dxx8iaotnnc0i" path="res://prototyping/dialogue_option.gd" id="1_dp3eg"]
+[ext_resource type="Script" uid="uid://b31yxm1ornek0" path="res://scenes/level_manager.gd" id="1_y6deb"]
 [ext_resource type="Script" uid="uid://boxb8cp1fj4em" path="res://prototyping/dialogue_button.gd" id="3_0ld40"]
 [ext_resource type="Texture2D" uid="uid://5n2r7a3dbkck" path="res://assets/light/point_light_neutral.webp" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://c6mayed2volb8" path="res://prototyping/sin_measure_slider.gd" id="4_gqmmt"]
@@ -201,7 +202,16 @@ shader_parameter/pattern = 1
 shader_parameter/inside = true
 shader_parameter/add_margins = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3ni"]
+shader = ExtResource("4_jkv2x")
+
 [node name="Main" type="Node2D"]
+
+[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("LevelShader", "LevelModulate", "InteractShader")]
+script = ExtResource("1_y6deb")
+LevelShader = NodePath("../LevelLayer/Level/LevelObjs/ColorRect")
+LevelModulate = NodePath("../LevelLayer/Level/CanvasModulate")
+InteractShader = NodePath("../InteractLayer/ColorRect")
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 layer = 1024
@@ -862,12 +872,19 @@ DialogueModifierValues = {
 1: [-15.0, 5.0, -8.0],
 2: [5.0]
 }
+CorrectNodeIndex = 1
 
 [node name="Sprite2D" parent="InteractLayer/DarkNode2" index="1"]
 texture = ExtResource("16_jbj1t")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="InteractLayer"]
-color = Color(0.5917481, 0.5917481, 0.59261936, 1)
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InteractLayer"]
+material = SubResource("ShaderMaterial_pm3ni")
+custom_minimum_size = Vector2(1600, 900)
+offset_right = 1600.0
+offset_bottom = 900.0
 
 [editable path="PlayerLayer/LightNode"]
 [editable path="InteractLayer/DarkNode"]
